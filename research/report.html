@@ -1,0 +1,328 @@
+<title>Shopify App Store — Phase 1 Market Research</title>
+<style>
+  :root{
+    --ground:#f7f6f3; --panel:#ffffff; --ink:#16181d; --ink-soft:#4a4d55; --ink-faint:#797d86;
+    --line:#e4e2dc; --line-strong:#d3d0c8;
+    --accent:#1f7a4d; --accent-soft:#e6f0ea;
+    --amber:#b9791f; --amber-soft:#f6ecdb; --red:#b0483a; --red-soft:#f6e2de;
+    --radius:10px; --maxw:940px;
+    --mono:"SF Mono",ui-monospace,"JetBrains Mono",Menlo,Consolas,monospace;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --ground:#14161a; --panel:#1c1f25; --ink:#e7e6e2; --ink-soft:#a9adb6; --ink-faint:#7c828d;
+      --line:#2a2e36; --line-strong:#363b45;
+      --accent:#4bbd83; --accent-soft:#172c22;
+      --amber:#d99b45; --amber-soft:#2c2415; --red:#d6796b; --red-soft:#2e1d1a;
+    }
+  }
+  :root[data-theme="dark"]{
+      --ground:#14161a; --panel:#1c1f25; --ink:#e7e6e2; --ink-soft:#a9adb6; --ink-faint:#7c828d;
+      --line:#2a2e36; --line-strong:#363b45;
+      --accent:#4bbd83; --accent-soft:#172c22;
+      --amber:#d99b45; --amber-soft:#2c2415; --red:#d6796b; --red-soft:#2e1d1a;
+  }
+  :root[data-theme="light"]{
+      --ground:#f7f6f3; --panel:#ffffff; --ink:#16181d; --ink-soft:#4a4d55; --ink-faint:#797d86;
+      --line:#e4e2dc; --line-strong:#d3d0c8;
+      --accent:#1f7a4d; --accent-soft:#e6f0ea;
+      --amber:#b9791f; --amber-soft:#f6ecdb; --red:#b0483a; --red-soft:#f6e2de;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);
+    line-height:1.6;-webkit-font-smoothing:antialiased;font-size:16px}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:clamp(28px,5vw,64px) clamp(18px,4vw,40px)}
+  h1,h2,h3{line-height:1.2;text-wrap:balance;letter-spacing:-0.02em;font-weight:680}
+  h1{font-size:clamp(1.9rem,4.5vw,2.9rem);margin:0 0 .3em}
+  h2{font-size:clamp(1.35rem,3vw,1.8rem);margin:2.6em 0 .1em;padding-top:1.4em;border-top:1px solid var(--line)}
+  h3{font-size:1.15rem;margin:1.8em 0 .4em;letter-spacing:-0.01em}
+  p{margin:.7em 0;max-width:66ch}
+  a{color:var(--accent)}
+  .eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--accent);font-weight:600;margin:0 0 .8em}
+  .lede{font-size:1.15rem;color:var(--ink-soft);max-width:60ch}
+  .meta{font-family:var(--mono);font-size:.76rem;color:var(--ink-faint);margin-top:1.4em;
+    display:flex;flex-wrap:wrap;gap:.4em 1.4em}
+  .meta b{color:var(--ink-soft);font-weight:600}
+
+  /* verdict card */
+  .verdict{background:var(--panel);border:1px solid var(--line-strong);border-radius:var(--radius);
+    padding:clamp(20px,3vw,30px);margin:2em 0;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+  .verdict h2{border:0;padding:0;margin:0 0 .5em;font-size:1.1rem}
+  .pick{display:flex;gap:.7em;align-items:baseline;flex-wrap:wrap;margin:.2em 0 .1em}
+  .pick .n{font-family:var(--mono);color:var(--accent);font-weight:700;font-size:.9rem}
+  .pick .t{font-size:1.25rem;font-weight:680;letter-spacing:-0.01em}
+  .pick .tag{font-family:var(--mono);font-size:.68rem;padding:.15em .55em;border-radius:20px;
+    background:var(--accent-soft);color:var(--accent);letter-spacing:.04em;align-self:center}
+  .verdict .why{color:var(--ink-soft);margin:.2em 0 1.2em;max-width:64ch}
+  hr.soft{border:0;border-top:1px solid var(--line);margin:1.1em 0}
+
+  /* tables */
+  .scroll{overflow-x:auto;margin:1.3em 0;border:1px solid var(--line);border-radius:var(--radius)}
+  table{border-collapse:collapse;width:100%;font-size:.9rem;min-width:640px}
+  th,td{text-align:left;padding:.62em .8em;border-bottom:1px solid var(--line)}
+  thead th{background:var(--panel);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;
+    color:var(--ink-faint);font-weight:600;position:sticky;top:0}
+  tbody tr:last-child td{border-bottom:0}
+  tbody tr:hover{background:var(--accent-soft)}
+  td.num,th.num{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:.85rem}
+  .niche-name{font-weight:600}
+  .rank{font-family:var(--mono);color:var(--ink-faint);font-size:.8rem}
+
+  /* chips */
+  .chip{display:inline-block;font-family:var(--mono);font-size:.7rem;padding:.12em .5em;border-radius:5px;
+    letter-spacing:.02em;white-space:nowrap;font-weight:600}
+  .chip.hot{background:var(--red-soft);color:var(--red)}
+  .chip.warm{background:var(--amber-soft);color:var(--amber)}
+  .chip.ok{background:var(--accent-soft);color:var(--accent)}
+  .chip.flat{background:var(--line);color:var(--ink-soft)}
+
+  /* complaint quotes */
+  .quotes{display:grid;gap:.7em;margin:1.1em 0}
+  .q{border-left:3px solid var(--line-strong);padding:.5em 0 .5em 1em;color:var(--ink-soft);font-size:.94rem}
+  .q.sev{border-left-color:var(--red)}
+  .q.mid{border-left-color:var(--amber)}
+  .q b{color:var(--ink);font-weight:600;font-style:normal}
+  .q .src{display:block;font-family:var(--mono);font-size:.7rem;color:var(--ink-faint);margin-top:.3em}
+
+  /* spec / plan lists */
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:1.4em}
+  @media(max-width:640px){.cols{grid-template-columns:1fr}}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:1.1em 1.2em}
+  .card h4{margin:0 0 .5em;font-size:.78rem;text-transform:uppercase;letter-spacing:.07em;
+    color:var(--ink-faint);font-family:var(--mono);font-weight:600}
+  ul.tight{margin:.3em 0;padding-left:1.1em}
+  ul.tight li{margin:.35em 0}
+  ol.week{list-style:none;counter-reset:d;padding:0;margin:1em 0}
+  ol.week li{counter-increment:d;padding:.55em 0 .55em 2.6em;position:relative;border-bottom:1px solid var(--line)}
+  ol.week li:last-child{border-bottom:0}
+  ol.week li::before{content:"D" counter(d);position:absolute;left:0;top:.5em;font-family:var(--mono);
+    font-size:.72rem;color:var(--accent);font-weight:700;background:var(--accent-soft);
+    padding:.1em .4em;border-radius:5px}
+  ol.week.wk2 li{counter-increment:d}
+  .badge-row{display:flex;gap:.5em;flex-wrap:wrap;margin:.5em 0 0}
+  .callout{background:var(--amber-soft);border:1px solid color-mix(in srgb,var(--amber) 30%,transparent);
+    border-radius:var(--radius);padding:.9em 1.1em;margin:1.2em 0;font-size:.92rem;color:var(--ink)}
+  .callout b{color:var(--amber)}
+  .foot{margin-top:3em;padding-top:1.4em;border-top:1px solid var(--line);
+    font-size:.82rem;color:var(--ink-faint);font-family:var(--mono)}
+  .kpi{display:flex;gap:1.6em;flex-wrap:wrap;margin:1.4em 0}
+  .kpi div{display:flex;flex-direction:column}
+  .kpi .v{font-size:1.5rem;font-weight:700;font-variant-numeric:tabular-nums;letter-spacing:-0.02em}
+  .kpi .l{font-family:var(--mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-faint)}
+</style>
+
+<div class="wrap">
+  <p class="eyebrow">Phase 1 · Market Research</p>
+  <h1>Where the empirically soft targets are in the Shopify App Store</h1>
+  <p class="lede">784 apps scanned across 52 categories, ranked by complaint intensity, revenue signal, and how solo-buildable the niche is. Two recommended targets, each with a v1 spec and a two-week build plan.</p>
+  <div class="meta">
+    <span><b>Method:</b> category + listing + review scrape (robots-respecting, cached)</span>
+    <span><b>Coverage:</b> 1,462 category rows · 784 distinct apps · 222 detail pages</span>
+    <span><b>Date:</b> 2026-07-20</span>
+  </div>
+
+  <div class="kpi">
+    <div><span class="v">52</span><span class="l">niches scored</span></div>
+    <div><span class="v">784</span><span class="l">apps ranked</span></div>
+    <div><span class="v">2</span><span class="l">targets recommended</span></div>
+    <div><span class="v">~$15</span><span class="l">planned price / mo</span></div>
+  </div>
+
+  <!-- VERDICT -->
+  <div class="verdict">
+    <h2>The call</h2>
+    <div class="pick"><span class="n">TARGET 1</span><span class="t">Shopify → Accounting reconciliation</span><span class="tag">primary</span></div>
+    <p class="why">The finance niche has the App Store's lowest average rating among high-willingness-to-pay categories (4.54 avg, 88% of apps paid, tiers to $200/mo). Even Intuit's own QuickBooks connector (3,152 reviews) draws a steady stream of concrete, fixable complaints: foreign-currency orders sync wrong amounts, sales tax isn't recorded, and payout-vs-transaction handling makes the books not reconcile. That's a correctness problem in a category merchants pay real money for.</p>
+    <hr class="soft">
+    <div class="pick"><span class="n">TARGET 2</span><span class="t">Self-serve store-notification / email template editor</span><span class="tag">faster v1</span></div>
+    <p class="why">A lighter, faster-to-ship hedge. The incumbent (Orderly Emails, 3.8) just torched its trust — a March 2026 update permanently deleted merchants' collections — but the deeper read is that AI now makes template generation cheap. The opening is a <em>safe, self-serve, no-write-access</em> transactional-email editor. Lower build risk; also lower moat. Recommended only as the parallel/backup bet.</p>
+    <hr class="soft">
+    <p class="why" style="margin-bottom:0"><b style="color:var(--ink)">Recommendation:</b> Build Target&nbsp;1 as the flagship attempt and treat its integration surface (QuickBooks/Xero APIs, correctness) as the real work. Keep Target&nbsp;2 scoped as the fallback if Target&nbsp;1's build stretches past three weeks.</p>
+  </div>
+
+  <!-- SCORECARD -->
+  <h2>Ranked niche scorecard</h2>
+  <p>Every leaf niche, scored on the three axes that matter for a solo builder: <b>dissatisfaction</b> (share of apps rated below 4.7), <b>revenue signal</b> (median review count as a proxy for install base, plus % of apps that charge and their top price), and buildability. Channel/marketplace-sync niches are flagged — they need platform partnerships and are <em>not</em> solo-buildable.</p>
+  <div class="scroll">
+    <table>
+      <thead><tr>
+        <th>#</th><th>Niche</th><th class="num">Apps</th><th class="num">Avg ★</th>
+        <th class="num">Dissat.</th><th class="num">Med. reviews</th><th class="num">% paid</th>
+        <th class="num">Top $/mo</th><th>Read</th>
+      </tr></thead>
+      <tbody>
+        <tr><td class="rank">1</td><td class="niche-name">Store management · Finances</td><td class="num">24</td><td class="num">4.54</td><td class="num">33%</td><td class="num">286</td><td class="num">88%</td><td class="num">$200</td><td><span class="chip hot">target 1</span></td></tr>
+        <tr><td class="rank">2</td><td class="niche-name">Orders &amp; shipping · Inventory</td><td class="num">24</td><td class="num">4.31</td><td class="num">39%</td><td class="num">222</td><td class="num">92%</td><td class="num">$385</td><td><span class="chip flat">sync-heavy</span></td></tr>
+        <tr><td class="rank">3</td><td class="niche-name">Store management · Operations</td><td class="num">24</td><td class="num">4.35</td><td class="num">38%</td><td class="num">221</td><td class="num">75%</td><td class="num">$749</td><td><span class="chip warm">watch</span></td></tr>
+        <tr><td class="rank">4</td><td class="niche-name">Store design · Notifications / email</td><td class="num">24</td><td class="num">4.81</td><td class="num">23%</td><td class="num">1006</td><td class="num">75%</td><td class="num">$59</td><td><span class="chip warm">target 2</span></td></tr>
+        <tr><td class="rank">5</td><td class="niche-name">Returns &amp; warranty</td><td class="num">24</td><td class="num">4.73</td><td class="num">29%</td><td class="num">323</td><td class="num">83%</td><td class="num">$350</td><td><span class="chip warm">watch</span></td></tr>
+        <tr><td class="rank">6</td><td class="niche-name">Internationalization · Currency/translation</td><td class="num">24</td><td class="num">4.77</td><td class="num">33%</td><td class="num">292</td><td class="num">67%</td><td class="num">$75</td><td><span class="chip warm">watch</span></td></tr>
+        <tr><td class="rank">7</td><td class="niche-name">Marketing · Advertising</td><td class="num">31</td><td class="num">4.61</td><td class="num">48%</td><td class="num">407</td><td class="num">87%</td><td class="num">$1250</td><td><span class="chip flat">ad-API</span></td></tr>
+        <tr><td class="rank">8</td><td class="niche-name">Sales channels · Selling online</td><td class="num">24</td><td class="num">4.35</td><td class="num">54%</td><td class="num">712</td><td class="num">79%</td><td class="num">$99</td><td><span class="chip flat">channel</span></td></tr>
+        <tr><td class="rank">9</td><td class="niche-name">Orders &amp; shipping · Orders</td><td class="num">24</td><td class="num">4.66</td><td class="num">38%</td><td class="num">439</td><td class="num">96%</td><td class="num">$1189</td><td><span class="chip ok">crowded</span></td></tr>
+        <tr><td class="rank">10</td><td class="niche-name">Store design · Content</td><td class="num">24</td><td class="num">4.76</td><td class="num">29%</td><td class="num">193</td><td class="num">92%</td><td class="num">$249</td><td><span class="chip ok">crowded</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:.85rem;color:var(--ink-faint)"><b>Reading the flags.</b> <span class="chip flat" style="font-size:.66rem">sync/channel</span> niches score badly <em>because</em> they depend on third-party marketplaces (Etsy/eBay/Amazon) or ad platforms — the low ratings come from API breakage you can't control, and you'd need partnerships. Skip them despite the tempting numbers. The real solo opening is a niche that's unhappy for a reason <em>you can fix in your own code.</em></p>
+
+  <!-- TARGET 1 DEEP DIVE -->
+  <h2>Target 1 — Accounting reconciliation for Shopify</h2>
+  <p>The finances niche is the sweet spot: high willingness to pay, high dissatisfaction, and — crucially — the pain is <b>data correctness</b>, which is entirely within a solo builder's control. You're not fighting a platform; you're doing the reconciliation math right where incumbents do it wrong.</p>
+
+  <h3>Incumbents</h3>
+  <div class="scroll">
+    <table>
+      <thead><tr><th>App</th><th class="num">★</th><th class="num">Reviews</th><th>Pricing</th><th>Note</th></tr></thead>
+      <tbody>
+        <tr><td>QuickBooks Online (Intuit, 1st-party)</td><td class="num">4.8</td><td class="num">3,152</td><td>Free to install</td><td>Steady substantive complaints despite the headline rating</td></tr>
+        <tr><td>QuickBooks by ECC / third-party</td><td class="num">4.9</td><td class="num">867</td><td>Free trial</td><td>Support-heavy onboarding</td></tr>
+        <tr><td>A2X</td><td class="num">5.0</td><td class="num">335</td><td>from ~$30/mo</td><td>Strong but priced for larger merchants</td></tr>
+        <tr><td>Data Export / Report Pundit</td><td class="num">5.0</td><td class="num">1,900+</td><td>Free plan avail.</td><td>Reporting, not true bookkeeping sync</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>What merchants actually complain about</h3>
+  <div class="quotes">
+    <div class="q sev"><b>Foreign-currency orders sync the wrong amount.</b> “Syncing works fine with US orders, but any Shopify order in a foreign currency will send incorrect price data.”<span class="src">QuickBooks Online · Jul 13 2026 · 1★</span></div>
+    <div class="q sev"><b>Sales tax silently isn't recorded.</b> “The app recognizes the deposits, but it doesn't record the sales tax. Why would an accounting company make an app that doesn't record sales tax on the transactions.”<span class="src">QuickBooks Online · May 15 2026 · 1★</span></div>
+    <div class="q sev"><b>Payouts vs. individual transactions → books don't reconcile.</b> “Gross amounts were showing lower than net amounts, fees were missing, and several transactions were not categorizing or reconciling correctly.”<span class="src">QuickBooks Online · May 13 2026 · 1★</span></div>
+    <div class="q mid"><b>Forced legacy → new migration means rebuilding workflows.</b> “I was notified the old integration was no longer supported… I'll have to rebuild the workflows I'd established on the legacy version.”<span class="src">QuickBooks Online · Jul 2026 · 3★</span></div>
+    <div class="q mid"><b>Onboarding only works with a support agent on the line.</b> Nearly every 5★ review names a specific human who set it up for them — a self-serve failure hiding inside a good rating.<span class="src">Pattern across QuickBooks Online reviews</span></div>
+  </div>
+
+  <div class="callout"><b>The wedge:</b> a bookkeeping sync that gets multi-currency, sales tax, and payout reconciliation right <em>by default</em>, with self-serve setup and a visible "your books match to the cent" reconciliation view. Not more features — the same feature, correct.</div>
+
+  <h3>v1 feature spec — the minimum that fixes the top complaints</h3>
+  <div class="cols">
+    <div class="card">
+      <h4>In scope</h4>
+      <ul class="tight">
+        <li>One-way sync: Shopify orders/refunds/payouts → QuickBooks Online (start with QBO only)</li>
+        <li>Correct <b>multi-currency</b>: post in store currency, record the FX gain/loss line</li>
+        <li><b>Sales tax</b> mapped to a proper tax line/liability account, per jurisdiction</li>
+        <li><b>Payout-level reconciliation</b>: match a Shopify payout to its bank deposit, with fees split out — so the books tie to the cent</li>
+        <li>A reconciliation dashboard: "N orders synced, $X matched, 0 unreconciled"</li>
+        <li>Fully self-serve OAuth onboarding + a mapping wizard (accounts, tax, currencies)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Explicitly out of scope for v1</h4>
+      <ul class="tight">
+        <li>Xero, Sage, other ledgers (add after QBO proves out)</li>
+        <li>Two-way / inventory sync</li>
+        <li>Historical backfill beyond 60 days</li>
+        <li>Multi-store consolidation</li>
+        <li>Anything requiring a support call — if it needs a human, it's a bug</li>
+      </ul>
+      <div class="badge-row">
+        <span class="chip ok">Free 14-day trial</span><span class="chip ok">$19/mo</span>
+      </div>
+    </div>
+  </div>
+
+  <h3>Two-week build plan</h3>
+  <p style="font-size:.9rem;color:var(--ink-soft)">Assumes Shopify CLI + the official Remix app template, hosted on a single Node service. The correctness work — not the plumbing — is where the time goes.</p>
+  <div class="cols">
+    <div class="card">
+      <h4>Week 1 — plumbing &amp; sync</h4>
+      <ol class="week">
+        <li>Scaffold Remix app via Shopify CLI; dev store; OAuth + billing API wired</li>
+        <li>QuickBooks OAuth; store tokens; sandbox company connected</li>
+        <li>Ingest Shopify orders/refunds via webhooks + a backfill job</li>
+        <li>Map an order → QBO sales receipt; get one clean write end-to-end</li>
+        <li>Multi-currency: post store currency + FX line; test 3 currencies</li>
+      </ol>
+    </div>
+    <div class="card">
+      <h4>Week 2 — correctness &amp; ship</h4>
+      <ol class="week wk2" style="counter-reset:d 5">
+        <li>Sales-tax mapping to tax/liability accounts, per jurisdiction</li>
+        <li>Payout reconciliation: match payout → deposit, split fees; tie to cent</li>
+        <li>Reconciliation dashboard + mapping wizard (self-serve setup)</li>
+        <li>Billing gates, trial, error states, empty states, docs pages</li>
+        <li>Test-store dress rehearsal; listing copy + screenshots; submit for review</li>
+      </ol>
+    </div>
+  </div>
+  <div class="callout" style="background:var(--red-soft);border-color:color-mix(in srgb,var(--red) 30%,transparent)"><b style="color:var(--red)">Honest risk:</b> accounting is correctness-critical and the QBO API has real surface area — this may run 3 weeks, not 2, and a wrong number erodes trust fast. That's precisely why it's defensible: incumbents get it wrong and it's hard to get right. If week 2 slips, ship Target 2 first to keep the portfolio cadence, and let this one take the time it needs.</div>
+
+  <!-- TARGET 2 -->
+  <h2>Target 2 — Safe self-serve transactional-email editor</h2>
+  <p>The faster, lower-risk bet — and the lower-moat one. Orderly Emails (3.8★, 626 reviews) is the wounded incumbent: a <b>March 2026 update permanently deleted merchants' collections</b>, and the 1★ reviews are a wall of merchants who lost years of SEO with no restore path and a terse "oops, sorry." The opening is a template editor that <em>never asks for write access to store data</em> and generates clean Liquid you own.</p>
+  <div class="quotes">
+    <div class="q sev"><b>An update deleted store data with no restore.</b> “A bug in an Orderly Emails update permanently deleted multiple collections… the data could not be recovered — neither by the app developers nor by Shopify.”<span class="src">Orderly Emails · Apr–Jul 2026 · 1★ (multiple merchants)</span></div>
+    <div class="q mid"><b>The category is being commoditized by AI.</b> “We realized how easy it is to use Claude instead of this app — just paste in your existing notification email…”<span class="src">Orderly Emails · May 6 2026 · 1★</span></div>
+  </div>
+  <div class="cols">
+    <div class="card">
+      <h4>v1 spec</h4>
+      <ul class="tight">
+        <li>Visual editor for Shopify's transactional emails (order confirm, shipping, etc.)</li>
+        <li><b>Read-only</b> to store data; outputs Liquid the merchant pastes in — zero destructive access, marketed as the safety feature</li>
+        <li>Brand kit (logo, colors, fonts) applied across all templates at once</li>
+        <li>Live preview with real order data; one-click revert; version history</li>
+        <li>Self-serve, no support path</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Two-week plan</h4>
+      <ul class="tight">
+        <li><b>Wk 1:</b> Remix scaffold + billing; pull the standard notification set; template renderer + live preview with sample data</li>
+        <li><b>Wk 2:</b> brand-kit theming across templates; export/paste flow; version history + revert; listing + submit</li>
+      </ul>
+      <div class="badge-row"><span class="chip ok">Free trial</span><span class="chip ok">$12–15/mo</span><span class="chip warm">lower moat</span></div>
+    </div>
+  </div>
+
+  <!-- SETUP CHECKLIST -->
+  <h2>Your setup track (do this in parallel — needs your identity/credentials)</h2>
+  <p>These are the steps only you can do, flagged because they involve account creation, payment, or legal agreements. None block the research; they gate <em>submission</em>. Start now so nothing waits on them later.</p>
+  <div class="cols">
+    <div class="card">
+      <h4>Accounts &amp; stores</h4>
+      <ul class="tight">
+        <li><b>Shopify Partner account</b> at shopify.com/partners — Join Now, verify email within 24h, complete business profile. Free.</li>
+        <li><b>Development store</b> from the Partner dashboard — unlimited, free; where you build and test. Can only install free/partner apps, no real transactions.</li>
+        <li><b>Emergency developer contact</b> in the Partner dashboard — required before an app can be submitted.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>For Target 1 specifically</h4>
+      <ul class="tight">
+        <li><b>Intuit Developer account</b> + a QuickBooks Online sandbox company (free) for OAuth + testing.</li>
+        <li>Decide the app's legal entity / name for the Partner agreement and Intuit app registration.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Listing requirements (gate submission)</h4>
+      <ul class="tight">
+        <li>App must deliver exactly what the listing describes; core flow must work.</li>
+        <li><b>Valid test credentials</b> in the review notes granting full feature access.</li>
+        <li>Performance: must not drop store Lighthouse score by &gt;10 points.</li>
+        <li>GDPR/CCPA compliance + the mandatory privacy webhooks.</li>
+        <li>Listing copy, icon, screenshots, pricing, support email/docs URL.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>What I'll flag to you as we go</h4>
+      <ul class="tight">
+        <li>Every point that needs a credential, a payment method, or accepting terms — I'll stop and hand it to you.</li>
+        <li>OAuth app registration (Intuit / Shopify) — you approve the scopes.</li>
+        <li>App Store submission itself (agreeing to the review + Partner agreement).</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Method &amp; honesty notes</h2>
+  <ul class="tight" style="max-width:66ch">
+    <li><b>Data:</b> scraped the App Store's server-rendered category pages (52 leaf categories, ~40 apps each) for handle/name/rating/review-count/pricing, plus 222 listing pages for launch dates and price tiers, plus targeted 1–2★ review mining. Respected robots.txt (avoided <code>/internal/</code>, <code>/services/</code>, <code>q=</code> params) with a 1.2s crawl delay and on-disk caching. Pipeline committed to <code>~/Documents/GitHub/shopify-apps</code>.</li>
+    <li><b>Known gap:</b> review pagination is JavaScript-driven, so static scraping caps at ~10 reviews per rating filter per app. Complaint themes above come from the most-recent low-star reviews plus browser-rendered deep reads of the finalists — directional, not exhaustive. Deeper mining (headless browser) is the obvious next step before committing.</li>
+    <li><b>What the data does <em>not</em> yet tell us:</b> true install counts (only review counts as a proxy), churn, or actual revenue. Those only come after we ship and watch organic installs — which is exactly what the 60–90 day kill-gate measures.</li>
+  </ul>
+
+  <p class="foot">Phase 1 research · Shopify micro-SaaS portfolio · generated 2026-07-20 · pipeline in shopify-apps/research</p>
+</div>
