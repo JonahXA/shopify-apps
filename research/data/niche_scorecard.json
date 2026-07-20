@@ -1,0 +1,470 @@
+[
+ {
+  "niche": "finding-products",
+  "apps": 40,
+  "avg": 4.8,
+  "dissat": 0.23,
+  "med_rev": 291,
+  "top_price": 199,
+  "paid": 0.93
+ },
+ {
+  "niche": "finding-products-sourcing-options-dropshipping",
+  "apps": 22,
+  "avg": 4.77,
+  "dissat": 0.18,
+  "med_rev": 291,
+  "top_price": 299,
+  "paid": 0.95
+ },
+ {
+  "niche": "finding-products-sourcing-options-print-on-demand-pod",
+  "apps": 21,
+  "avg": 4.79,
+  "dissat": 0.19,
+  "med_rev": 260,
+  "top_price": 79,
+  "paid": 1.0
+ },
+ {
+  "niche": "finding-products-sourcing-options-wholesale",
+  "apps": 24,
+  "avg": 4.87,
+  "dissat": 0.08,
+  "med_rev": 328,
+  "top_price": 129,
+  "paid": 0.83
+ },
+ {
+  "niche": "marketing-and-conversion",
+  "apps": 40,
+  "avg": 4.78,
+  "dissat": 0.23,
+  "med_rev": 2401,
+  "top_price": 100000,
+  "paid": 0.78
+ },
+ {
+  "niche": "marketing-and-conversion-advertising",
+  "apps": 31,
+  "avg": 4.61,
+  "dissat": 0.48,
+  "med_rev": 407,
+  "top_price": 1250,
+  "paid": 0.87
+ },
+ {
+  "niche": "marketing-and-conversion-advertising-affiliate-programs",
+  "apps": 24,
+  "avg": 4.72,
+  "dissat": 0.21,
+  "med_rev": 193,
+  "top_price": 249,
+  "paid": 0.92
+ },
+ {
+  "niche": "marketing-and-conversion-checkout",
+  "apps": 24,
+  "avg": 4.74,
+  "dissat": 0.21,
+  "med_rev": 501,
+  "top_price": 2300,
+  "paid": 0.67
+ },
+ {
+  "niche": "marketing-and-conversion-customer-loyalty",
+  "apps": 24,
+  "avg": 4.8,
+  "dissat": 0.08,
+  "med_rev": 1203,
+  "top_price": 100000,
+  "paid": 0.96
+ },
+ {
+  "niche": "marketing-and-conversion-gifts",
+  "apps": 24,
+  "avg": 4.8,
+  "dissat": 0.08,
+  "med_rev": 180,
+  "top_price": 149,
+  "paid": 0.54
+ },
+ {
+  "niche": "marketing-and-conversion-marketing",
+  "apps": 39,
+  "avg": 4.75,
+  "dissat": 0.15,
+  "med_rev": 425,
+  "top_price": 179,
+  "paid": 0.85
+ },
+ {
+  "niche": "marketing-and-conversion-marketing-email-marketing",
+  "apps": 12,
+  "avg": 4.81,
+  "dissat": 0.08,
+  "med_rev": 2002,
+  "top_price": 59,
+  "paid": 0.67
+ },
+ {
+  "niche": "marketing-and-conversion-promotions",
+  "apps": 30,
+  "avg": 4.77,
+  "dissat": 0.2,
+  "med_rev": 377,
+  "top_price": 10000,
+  "paid": 0.77
+ },
+ {
+  "niche": "marketing-and-conversion-social-trust",
+  "apps": 30,
+  "avg": 4.9,
+  "dissat": 0.0,
+  "med_rev": 1070,
+  "top_price": 299,
+  "paid": 0.77
+ },
+ {
+  "niche": "marketing-and-conversion-social-trust-product-reviews",
+  "apps": 24,
+  "avg": 4.9,
+  "dissat": 0.0,
+  "med_rev": 477,
+  "top_price": 299,
+  "paid": 0.75
+ },
+ {
+  "niche": "marketing-and-conversion-upsell-and-bundles",
+  "apps": 39,
+  "avg": 4.93,
+  "dissat": 0.0,
+  "med_rev": 1012,
+  "top_price": 499,
+  "paid": 0.69
+ },
+ {
+  "niche": "orders-and-shipping",
+  "apps": 39,
+  "avg": 4.39,
+  "dissat": 0.39,
+  "med_rev": 404,
+  "top_price": 1189,
+  "paid": 0.9
+ },
+ {
+  "niche": "orders-and-shipping-inventory",
+  "apps": 24,
+  "avg": 4.31,
+  "dissat": 0.39,
+  "med_rev": 222,
+  "top_price": 385,
+  "paid": 0.92
+ },
+ {
+  "niche": "orders-and-shipping-orders",
+  "apps": 24,
+  "avg": 4.66,
+  "dissat": 0.38,
+  "med_rev": 439,
+  "top_price": 1189,
+  "paid": 0.96
+ },
+ {
+  "niche": "orders-and-shipping-returns-and-warranty",
+  "apps": 24,
+  "avg": 4.73,
+  "dissat": 0.17,
+  "med_rev": 323,
+  "top_price": 349,
+  "paid": 0.83
+ },
+ {
+  "niche": "orders-and-shipping-shipping-solutions",
+  "apps": 39,
+  "avg": 4.71,
+  "dissat": 0.15,
+  "med_rev": 447,
+  "top_price": 349,
+  "paid": 0.85
+ },
+ {
+  "niche": "orders-and-shipping-shipping-solutions-shipping",
+  "apps": 24,
+  "avg": 4.83,
+  "dissat": 0.12,
+  "med_rev": 283,
+  "top_price": 349,
+  "paid": 1.0
+ },
+ {
+  "niche": "sales-channels",
+  "apps": 40,
+  "avg": 4.81,
+  "dissat": 0.1,
+  "med_rev": 434,
+  "top_price": 499,
+  "paid": 0.82
+ },
+ {
+  "niche": "sales-channels-selling-in-person",
+  "apps": 24,
+  "avg": 4.67,
+  "dissat": 0.25,
+  "med_rev": 193,
+  "top_price": 89,
+  "paid": 0.92
+ },
+ {
+  "niche": "sales-channels-selling-in-person-retail",
+  "apps": 24,
+  "avg": 4.76,
+  "dissat": 0.25,
+  "med_rev": 48,
+  "top_price": 69,
+  "paid": 0.88
+ },
+ {
+  "niche": "sales-channels-selling-online",
+  "apps": 24,
+  "avg": 4.35,
+  "dissat": 0.54,
+  "med_rev": 712,
+  "top_price": 99,
+  "paid": 0.79
+ },
+ {
+  "niche": "sales-channels-selling-online-marketplaces",
+  "apps": 24,
+  "avg": 4.74,
+  "dissat": 0.25,
+  "med_rev": 712,
+  "top_price": 99,
+  "paid": 0.88
+ },
+ {
+  "niche": "selling-products",
+  "apps": 39,
+  "avg": 4.77,
+  "dissat": 0.18,
+  "med_rev": 770,
+  "top_price": 100000,
+  "paid": 0.87
+ },
+ {
+  "niche": "selling-products-custom-products",
+  "apps": 24,
+  "avg": 4.78,
+  "dissat": 0.12,
+  "med_rev": 892,
+  "top_price": 99,
+  "paid": 0.92
+ },
+ {
+  "niche": "selling-products-custom-products-product-variants",
+  "apps": 24,
+  "avg": 4.92,
+  "dissat": 0.0,
+  "med_rev": 668,
+  "top_price": 99,
+  "paid": 1.0
+ },
+ {
+  "niche": "selling-products-digital-goods-and-services",
+  "apps": 39,
+  "avg": 4.79,
+  "dissat": 0.08,
+  "med_rev": 565,
+  "top_price": 189,
+  "paid": 0.72
+ },
+ {
+  "niche": "selling-products-payments",
+  "apps": 40,
+  "avg": 4.66,
+  "dissat": 0.15,
+  "med_rev": 183,
+  "top_price": 100000,
+  "paid": 0.82
+ },
+ {
+  "niche": "selling-products-payments-subscriptions",
+  "apps": 22,
+  "avg": 4.88,
+  "dissat": 0.05,
+  "med_rev": 766,
+  "top_price": 100000,
+  "paid": 0.77
+ },
+ {
+  "niche": "selling-products-pricing",
+  "apps": 24,
+  "avg": 4.8,
+  "dissat": 0.08,
+  "med_rev": 309,
+  "top_price": 129,
+  "paid": 0.92
+ },
+ {
+  "niche": "store-design",
+  "apps": 30,
+  "avg": 4.77,
+  "dissat": 0.17,
+  "med_rev": 1326,
+  "top_price": 499,
+  "paid": 0.7
+ },
+ {
+  "niche": "store-design-content",
+  "apps": 24,
+  "avg": 4.76,
+  "dissat": 0.29,
+  "med_rev": 193,
+  "top_price": 249,
+  "paid": 0.92
+ },
+ {
+  "niche": "store-design-design-elements",
+  "apps": 24,
+  "avg": 4.64,
+  "dissat": 0.12,
+  "med_rev": 411,
+  "top_price": 125,
+  "paid": 0.75
+ },
+ {
+  "niche": "store-design-images-and-media",
+  "apps": 24,
+  "avg": 4.82,
+  "dissat": 0.17,
+  "med_rev": 402,
+  "top_price": 99,
+  "paid": 0.79
+ },
+ {
+  "niche": "store-design-internationalization",
+  "apps": 30,
+  "avg": 4.73,
+  "dissat": 0.2,
+  "med_rev": 729,
+  "top_price": 69,
+  "paid": 0.7
+ },
+ {
+  "niche": "store-design-internationalization-currency-and-translation",
+  "apps": 24,
+  "avg": 4.77,
+  "dissat": 0.33,
+  "med_rev": 292,
+  "top_price": 75,
+  "paid": 0.67
+ },
+ {
+  "niche": "store-design-notifications",
+  "apps": 24,
+  "avg": 4.87,
+  "dissat": 0.08,
+  "med_rev": 1006,
+  "top_price": 59,
+  "paid": 0.75
+ },
+ {
+  "niche": "store-design-product-display",
+  "apps": 24,
+  "avg": 4.88,
+  "dissat": 0.08,
+  "med_rev": 128,
+  "top_price": 24,
+  "paid": 0.92
+ },
+ {
+  "niche": "store-design-search-and-navigation",
+  "apps": 24,
+  "avg": 4.8,
+  "dissat": 0.08,
+  "med_rev": 306,
+  "top_price": 1499,
+  "paid": 0.88
+ },
+ {
+  "niche": "store-design-site-optimization",
+  "apps": 30,
+  "avg": 4.82,
+  "dissat": 0.2,
+  "med_rev": 1685,
+  "top_price": 199,
+  "paid": 0.8
+ },
+ {
+  "niche": "store-design-site-optimization-seo",
+  "apps": 24,
+  "avg": 4.95,
+  "dissat": 0.0,
+  "med_rev": 666,
+  "top_price": 249,
+  "paid": 0.79
+ },
+ {
+  "niche": "store-design-storefronts",
+  "apps": 30,
+  "avg": 4.81,
+  "dissat": 0.1,
+  "med_rev": 307,
+  "top_price": 499,
+  "paid": 0.8
+ },
+ {
+  "niche": "store-management",
+  "apps": 39,
+  "avg": 4.77,
+  "dissat": 0.26,
+  "med_rev": 359,
+  "top_price": 900,
+  "paid": 0.79
+ },
+ {
+  "niche": "store-management-finances",
+  "apps": 24,
+  "avg": 4.54,
+  "dissat": 0.33,
+  "med_rev": 286,
+  "top_price": 200,
+  "paid": 0.88
+ },
+ {
+  "niche": "store-management-operations",
+  "apps": 24,
+  "avg": 4.35,
+  "dissat": 0.38,
+  "med_rev": 221,
+  "top_price": 749,
+  "paid": 0.75
+ },
+ {
+  "niche": "store-management-operations-analytics",
+  "apps": 24,
+  "avg": 4.88,
+  "dissat": 0.12,
+  "med_rev": 177,
+  "top_price": 200,
+  "paid": 0.83
+ },
+ {
+  "niche": "store-management-security",
+  "apps": 30,
+  "avg": 4.77,
+  "dissat": 0.13,
+  "med_rev": 272,
+  "top_price": 59,
+  "paid": 0.8
+ },
+ {
+  "niche": "store-management-support",
+  "apps": 39,
+  "avg": 4.82,
+  "dissat": 0.13,
+  "med_rev": 245,
+  "top_price": 900,
+  "paid": 0.87
+ }
+]

@@ -1,0 +1,104 @@
+[
+ {
+  "handle": "backup",
+  "rating": 1,
+  "date": "May 12, 2026",
+  "text": "We lost our Website in Mar 26 while we were away. The 'bug' in the software was from Orderly emails. Rewind helped us recover our website from the backups taken by their product. A couple of learning from this exercise might help our customers:- 1. The entire website is not backup probably because some of the linkages is in Shopify code rather than within the database. 2. This would mean what we had to do - manual fixes. 3. You can get a file from Rewind that has some technical data on it for yo"
+ },
+ {
+  "handle": "backup",
+  "rating": 1,
+  "date": "April 24, 2026",
+  "text": "Restore was blocked for 4 days in our other store. Nobody available for help over the weekend. I also don't like you cannot restore specific items. You either restore ALL blog posts or none, ALL products or none, ALL collections or none and so. Switching to other app."
+ },
+ {
+  "handle": "returns-center-by-aftership",
+  "rating": 1,
+  "date": "June 11, 2026",
+  "text": "HORRIBLE EXPERIENCE! Website shows different pricing every time you reload the page. They claim the setup process is 30 minutes, but there are so many bugs along the way that require support, that the process actually takes hours. And once you finally get it setup, you realize that the lower pricing tiers completely fail at making returns automated (ex: won't auto-select shipping carriers, so returns fail because the one shipping option that it'll let you choose won't work with every return.) On"
+ },
+ {
+  "handle": "returns-center-by-aftership",
+  "rating": 1,
+  "date": "May 18, 2026",
+  "text": "I had an extremely frustrating experience with AfterShip Returns and honestly regret wasting so much time setting it up. As a Shopify business owner, I spent HOURS configuring their return portal, workflows, customer messaging, replacement flows, uploads, and policies \u2014 only to discover that one of the most basic and essential return workflow features was locked behind a more expensive plan. Our business simply wanted to approve replacements without forcing customers to return low-value items. T"
+ },
+ {
+  "handle": "shipstation",
+  "rating": 2,
+  "date": "June 19, 2026",
+  "text": "We've been using ShipStation for over three months and have connected it to our Royal Mail business account. While it's one of the better platforms for using your own courier accounts, such as Royal Mail, we've encountered a surprising number of limitations and ongoing issues. Unfortunately, there appears to be little sign of meaningful improvement. For a company that has been in this industry for so long, it's difficult to understand how many essential features are still missing and how many co"
+ },
+ {
+  "handle": "shipstation",
+  "rating": 1,
+  "date": "June 15, 2026",
+  "text": "Terrible customer service and support. Does not integrate with the basics like pick ups for TeamGe/toll. Contacted account manager and she passed it off at lightening speed to tech support who did nothing after multiple attempts to contact them over a month. You pay a fee to make your business get a poorer customer experience whilst making your job harder. The response from shipstation below is exactly the same as 2 previous emails I have received with no outcome."
+ },
+ {
+  "handle": "qbconnector",
+  "rating": 3,
+  "date": "July 13, 2026",
+  "text": "Syncing works fine with US orders, but any shopify order in a foreign currency will send incorrect price data."
+ },
+ {
+  "handle": "qbconnector",
+  "rating": 3,
+  "date": "July 10, 2026",
+  "text": "This review is about the product itself, not the customer service I received. As someone who has worked with much more complex accounting software, I find QuickBooks Online surprisingly confusing for what is supposed to be a simple accounting program. I was notified that the old Shopify integration was no longer supported and that I needed to move to the new integration. To do that, I had to disconnect the existing Shopify connection before connecting to the new platform. Unfortunately, once I d"
+ },
+ {
+  "handle": "qbconnector",
+  "rating": 3,
+  "date": "July 2, 2026",
+  "text": "The product needs work, as does the self-serve documentation. Support seems understaffed and it took an hour to get to the top of the queue. Francis was helpful toward troubleshooting my onboarding issues, but some of those issues couldn't be resolved via the current product they've shipped. I'll have to rebuild the workflows I'd established on the legacy version of this app."
+ },
+ {
+  "handle": "qbconnector",
+  "rating": 3,
+  "date": "June 25, 2026",
+  "text": "Sherwin is very helpful, and I give Sherwin 5 stars for his help! My 3 Star Rating is because I'm unable to log in to QB after trying multiple browsers, including incognito mode, due to a random error. I also have now been dealing with the 3rd broken integration with Shopify, where it now records individual transactions instead of payouts. I'm missing a significant portion of net sales that are not being reported to QB... will try to reach out again once I can log back into my account."
+ },
+ {
+  "handle": "qbconnector",
+  "rating": 1,
+  "date": "May 15, 2026",
+  "text": "While the app recognizes the deposits, it doesn't record the sales tax. Why would an accounting company make an app that doesn't record sales tax on the transactions."
+ },
+ {
+  "handle": "loop-returns",
+  "rating": 1,
+  "date": "June 9, 2026",
+  "text": "Unable to log in and there is no way to re-set my password that works. I emailed support hopefully they respond soon but I have never had an app with such challenges logging in and my customers are getting very upset."
+ },
+ {
+  "handle": "loop-returns",
+  "rating": 1,
+  "date": "July 8, 2026",
+  "text": "Customer service is poor - no calls or demos given - it is a complete pain to setup."
+ },
+ {
+  "handle": "return-prime",
+  "rating": 1,
+  "date": "May 18, 2026",
+  "text": "Do not trust this app if you expect any level of customer service. I was managing the St. Clair website and reached out to their support team regarding our configuration. Zero response. Having an app team ghost you during a live project is a massive risk for any e-commerce business. Their lack of professionalism forced us to switch to a competitor. Truly disappointing experience."
+ },
+ {
+  "handle": "return-prime",
+  "rating": 1,
+  "date": "April 22, 2026",
+  "text": "UPDATE: Every single day there is a new issue, please don't waste your time on this portal, its an absolute SCAM! All the reviews must be fake, look at the 1 stars for real reviews. Worst return portal we\u2019ve used. Would not recommend. The system charges customers for a return label per item and does not allow multiple items to be returned under one label, which creates unnecessary friction. It also does not allow us to include customer information on labels, which complicates processing on our e"
+ },
+ {
+  "handle": "return-prime",
+  "rating": 1,
+  "date": "March 30, 2026",
+  "text": "The app has added their own shipping rule to our cart and we can't remove it. We have used this platform for over 2 years with ongoing issues. Now uninstalling and moving to another platform."
+ },
+ {
+  "handle": "returngo",
+  "rating": 1,
+  "date": "May 3, 2026",
+  "text": "I\u2019m writing this review because the lack of follow-up has been unacceptable. After completing the demo, I\u2019ve been trying to connect with my rep to move forward with installation, but I haven\u2019t received a response in over two weeks from her. This is time-sensitive, and the lack of communication is extremely disappointing."
+ }
+]
