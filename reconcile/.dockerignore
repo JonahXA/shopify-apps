@@ -1,3 +1,10 @@
 .cache
 build
 node_modules
+.env
+.env.*
+prisma/dev.sqlite
+prisma/dev.sqlite-journal
+.git
+research
+scripts/qbo-smoke.mjs
