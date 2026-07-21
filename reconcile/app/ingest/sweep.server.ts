@@ -7,7 +7,7 @@
  * first live run against a dev store (credential-gated) validates them.
  */
 import prisma from "../db.server";
-import { decimalToCents, mapBalanceTxnType, normalizeOrder } from "./normalize";
+import { decimalToCents, mapBalanceTxnType, normalizeOrder, normalizeRefund } from "./normalize";
 
 type AdminGraphql = (query: string, opts?: { variables?: Record<string, unknown> }) => Promise<Response>;
 
@@ -37,7 +37,7 @@ const PAYOUTS_QUERY = `#graphql
 
 const ORDERS_QUERY = `#graphql
   query ReconcileOrders($cursor: String, $search: String) {
-    orders(first: 100, after: $cursor, query: $search) {
+    orders(first: 50, after: $cursor, query: $search) {
       pageInfo { hasNextPage endCursor }
       edges { node {
         id name presentmentCurrencyCode
@@ -45,6 +45,18 @@ const ORDERS_QUERY = `#graphql
         totalShippingPriceSet { shopMoney { amount currencyCode } presentmentMoney { amount currencyCode } }
         totalPriceSet { shopMoney { amount currencyCode } presentmentMoney { amount currencyCode } }
         taxLines { title priceSet { shopMoney { amount currencyCode } presentmentMoney { amount currencyCode } } }
+        refunds {
+          id
+          refundLineItems(first: 100) { edges { node {
+            subtotalSet { presentmentMoney { amount currencyCode } shopMoney { amount currencyCode } }
+            totalTaxSet { presentmentMoney { amount currencyCode } shopMoney { amount currencyCode } }
+          } } }
+          orderAdjustments(first: 20) { edges { node {
+            reason
+            amountSet { presentmentMoney { amount currencyCode } shopMoney { amount currencyCode } }
+            taxAmountSet { presentmentMoney { amount currencyCode } shopMoney { amount currencyCode } }
+          } } }
+        }
       } }
     }
   }`;
@@ -136,6 +148,35 @@ export async function backfillOrders(graphql: AdminGraphql, shop: string, days =
         update: { ...row, shop },
       });
       count++;
+
+      // Persist refunds inline (their webhook is protected-data-gated).
+      const taxTitles = row.taxJson
+        ? (JSON.parse(row.taxJson) as Array<{ title: string }>).map((t) => t.title)
+        : [];
+      for (const rEdge of node.refunds ?? []) {
+        const refundRow = normalizeRefund(
+          {
+            id: gidTail(rEdge.id)!,
+            order_id: row.id,
+            refund_line_items: (rEdge.refundLineItems?.edges ?? []).map((e: any) => ({
+              subtotal_set: toSet(e.node.subtotalSet),
+              total_tax_set: toSet(e.node.totalTaxSet),
+            })),
+            order_adjustments: (rEdge.orderAdjustments?.edges ?? []).map((e: any) => ({
+              kind: /shipping/i.test(e.node.reason ?? "") ? "shipping_refund" : "refund_discrepancy",
+              amount_set: toSet(e.node.amountSet),
+              tax_amount_set: toSet(e.node.taxAmountSet),
+            })),
+          },
+          row.currency,
+          taxTitles,
+        );
+        await prisma.shopRefund.upsert({
+          where: { id: refundRow.id },
+          create: { ...refundRow, shop },
+          update: { ...refundRow, shop },
+        });
+      }
     }
     if (!conn.pageInfo.hasNextPage) break;
     cursor = conn.pageInfo.endCursor;

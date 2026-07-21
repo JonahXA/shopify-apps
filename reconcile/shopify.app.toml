@@ -20,13 +20,10 @@ api_version = "2026-10"
   uri = "/webhooks/app/scopes_update"
   topics = [ "app/scopes_update" ]
 
-  [[webhooks.subscriptions]]
-  uri = "/webhooks/orders/create"
-  topics = [ "orders/create", "orders/updated" ]
-
-  [[webhooks.subscriptions]]
-  uri = "/webhooks/refunds/create"
-  topics = [ "refunds/create" ]
+  # NOTE: orders/* and refunds/create carry protected customer data and
+  # require Shopify approval before an app may subscribe. We ingest orders
+  # and refunds via the authenticated GraphQL sweep instead (no PII beyond
+  # what we already need), so these webhooks are intentionally omitted.
 
   [[webhooks.subscriptions]]
   uri = "/webhooks/customers/data_request"
