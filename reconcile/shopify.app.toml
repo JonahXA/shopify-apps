@@ -2,7 +2,7 @@
 
 client_id = "87ae058b65951a8f47aa152331b13983"
 name = "JonahQA"
-application_url = "https://shopify.dev/apps/default-app-home"
+application_url = "https://reconcile-app.fly.dev"
 embedded = true
 
 [access_scopes]
@@ -38,8 +38,11 @@ api_version = "2026-10"
   compliance_topics = [ "shop/redact" ]
 
 [auth]
-redirect_urls = [ "https://shopify.dev/apps/default-app-home/api/auth" ]
+redirect_urls = [
+  "https://reconcile-app.fly.dev/auth/callback",
+  "https://reconcile-app.fly.dev/auth/shopify/callback",
+  "https://reconcile-app.fly.dev/api/auth",
+]
 
 [build]
-include_config_on_deploy = true
 automatically_update_urls_on_dev = true
