@@ -4,7 +4,7 @@ client_id = ""
 
 [access_scopes]
 # Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
-scopes = "write_products"
+scopes = "read_orders,read_shopify_payments_payouts"
 
 [webhooks]
 api_version = "2024-10"
@@ -18,6 +18,29 @@ api_version = "2024-10"
   [[webhooks.subscriptions]]
   topics = [ "app/scopes_update" ]
   uri = "/webhooks/app/scopes_update"
+
+  # Handled by: /app/routes/webhooks.orders.create.tsx
+  [[webhooks.subscriptions]]
+  topics = ["orders/create", "orders/updated"]
+  uri = "/webhooks/orders/create"
+
+  # Handled by: /app/routes/webhooks.refunds.create.tsx
+  [[webhooks.subscriptions]]
+  topics = ["refunds/create"]
+  uri = "/webhooks/refunds/create"
+
+  # Mandatory privacy compliance (public app requirement)
+  [[webhooks.subscriptions]]
+  uri = "/webhooks/customers/data_request"
+  compliance_topics = ["customers/data_request"]
+
+  [[webhooks.subscriptions]]
+  uri = "/webhooks/customers/redact"
+  compliance_topics = ["customers/redact"]
+
+  [[webhooks.subscriptions]]
+  uri = "/webhooks/shop/redact"
+  compliance_topics = ["shop/redact"]
 
   # Webhooks can have filters
   # Only receive webhooks for product updates with a product price >= 10.00
