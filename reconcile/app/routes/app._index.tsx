@@ -17,7 +17,7 @@ import {
   Text,
 } from "@shopify/polaris";
 import { useState } from "react";
-import { authenticate } from "../shopify.server";
+import { authenticate, RECONCILE_PLAN } from "../shopify.server";
 import prisma from "../db.server";
 import { qboClientFor } from "../qbo/connection.server";
 import type { QboAccount } from "../qbo/client";
@@ -25,8 +25,21 @@ import { backfillOrders, sweepPayouts } from "../ingest/sweep.server";
 import { postEligiblePayouts } from "../ingest/post.server";
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
-  const { session } = await authenticate.admin(request);
+  const { session, billing } = await authenticate.admin(request);
   const shop = session.shop;
+
+  // Billing gate: 14-day trial then $19/mo. Test mode until launch review.
+  // Plan-name generics don't infer while the template's upstream
+  // session-storage type mismatch stands, hence the scoped casts.
+  await billing.require({
+    plans: [RECONCILE_PLAN as never],
+    isTest: process.env.BILLING_TEST !== "0",
+    onFailure: () =>
+      billing.request({
+        plan: RECONCILE_PLAN as never,
+        isTest: process.env.BILLING_TEST !== "0",
+      }),
+  });
 
   const connection = await prisma.qboConnection.findUnique({ where: { shop } });
   const map = await prisma.accountMap.findUnique({ where: { shop } });

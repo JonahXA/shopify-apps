@@ -19,6 +19,17 @@ Data in `research/data/`. Cache (gitignored) in `research/cache/`.
 2. **Safe self-serve transactional-email editor** (faster v1 / fallback) — wounded incumbent
    (Orderly Emails 3.8), but lower moat.
 
+## Phase 2 — Build: Reconcile (in progress)
+`reconcile/` — Shopify→QuickBooks payout reconciliation app ($19/mo, 14-day trial).
+Official Remix template + Prisma. Core: `app/reconcile/` (engine, 23 tests),
+`app/qbo/` (OAuth+client+mapper), `app/ingest/` (webhooks, payout sweep, posting
+pipeline). Docs: `docs/reconcile-architecture.md`, `reconcile/docs/`.
+
+Code-complete pending credential gates (Jonah): Shopify Partner account + dev store,
+Intuit Developer account + QBO sandbox keys (.env per reconcile/.env.example), then
+`shopify app dev` end-to-end validation (GraphQL field names in sweep.server.ts need
+first live-run verification).
+
 ## Run
     pip install -r requirements.txt
     python3 research/scrape.py && python3 research/scrape_details.py && python3 research/analyze_final.py
