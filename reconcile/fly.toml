@@ -15,10 +15,11 @@ primary_region = "ord"
 [http_service]
   internal_port = 3000
   force_https = true
-  # keep one machine warm so Shopify webhooks/OAuth never hit a cold start
-  auto_stop_machines = "off"
+  # $0 constraint: scale to zero when idle. Fly auto-starts on the next
+  # request (brief cold start) — acceptable for dev/testing to stay free.
+  auto_stop_machines = "stop"
   auto_start_machines = true
-  min_machines_running = 1
+  min_machines_running = 0
   processes = ["app"]
 
   [[http_service.checks]]
@@ -30,4 +31,4 @@ primary_region = "ord"
 
 [[vm]]
   size = "shared-cpu-1x"
-  memory = "512mb"
+  memory = "256mb"
