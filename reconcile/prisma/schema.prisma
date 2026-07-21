@@ -13,6 +13,107 @@ datasource db {
   url      = "file:dev.sqlite"
 }
 
+// ---------- Reconcile domain ----------
+
+// One QBO company connection per shop. Tokens rotate on every refresh.
+model QboConnection {
+  shop         String   @id
+  realmId      String
+  accessToken  String
+  refreshToken String
+  expiresAt    DateTime
+  env          String   @default("sandbox") // sandbox | production
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+// Merchant's account mapping from the onboarding wizard (one per shop).
+model AccountMap {
+  shop                 String  @id
+  salesAccountId       String
+  shippingAccountId    String
+  feesAccountId        String
+  clearingAccountId    String
+  adjustmentsAccountId String
+  roundingAccountId    String
+  defaultTaxAccountId  String
+  // JSON: { "<jurisdiction title>": "<qbo account id>" }
+  taxAccountsJson      String  @default("{}")
+  onboarded            Boolean @default(false)
+}
+
+// Normalized ingest records (settlement-currency amounts in integer cents).
+model ShopOrder {
+  id        String @id // shopify order id
+  shop      String
+  name      String
+  currency  String // presentment currency
+  subtotal  Int
+  shipping  Int
+  // JSON: [{title, amount}]
+  taxJson   String @default("[]")
+  total     Int
+  createdAt DateTime @default(now())
+
+  @@index([shop])
+}
+
+model ShopRefund {
+  id       String @id
+  shop     String
+  orderId  String
+  currency String
+  subtotal Int // negative
+  shipping Int
+  taxJson  String @default("[]")
+  total    Int
+
+  @@index([shop])
+}
+
+model BalanceTxn {
+  id       String @id // shopify balance transaction id
+  shop     String
+  payoutId String?
+  type     String // charge | refund | dispute | adjustment | fee_only
+  sourceId String? // order or refund id
+  currency String // settlement currency
+  amount   Int
+  fee      Int
+  net      Int
+
+  @@index([shop, payoutId])
+}
+
+model Payout {
+  id       String   @id // shopify payout id
+  shop     String
+  date     DateTime
+  currency String
+  amount   Int
+  status   String // pending | paid
+  syncedAt DateTime @default(now())
+
+  @@index([shop, status])
+}
+
+// Idempotency + audit for QBO writes: exactly one posting row per payout.
+model QboPosting {
+  payoutId   String   @id
+  shop       String
+  docNumber  String
+  qboId      String? // set after successful post
+  state      String // pending | posted | error
+  errorCode  String?
+  errorHint  String? // self-serve fix-it guidance key
+  planJson   String // the JournalEntryPlan we posted (audit trail)
+  attempts   Int      @default(0)
+  postedAt   DateTime?
+  updatedAt  DateTime @updatedAt
+
+  @@index([shop, state])
+}
+
 model Session {
   id                  String    @id
   shop                String
